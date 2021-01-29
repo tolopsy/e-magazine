@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load blog_tags %}
+    {% block description %}{% endblock %}
+
+    {% block keywords %}{% endblock %}
+
+
+    {% block title %}Tolufy News - Unsubscribe{% endblock %}
+
+{% block content %}
+
+    <!-- ##### Contact Form Area Start ##### -->
+    <div class="contact-area section-padding-0-80">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="contact-title">
+                        <h2>{{info}}</h2>
+                    </div>
+                    {% if inform %}
+                    <div>
+                        <h6>To subscribe again, fill our <a href="{% url 'home' %}#newsletter"><span style="color: #ee002d">newsletter   subscription form</span></a></h6>
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+
+            
+
+            <!-- Google Maps -->
+            <div class="map-area">
+                <div id="googleMap"></div>
+            </div>
+
+        </div>
+    </div>
+    <!-- ##### Contact Form Area End ##### -->
+    {% endblock content %}

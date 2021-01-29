@@ -1,0 +1,64 @@
+ <!-- Newsletter Widget -->
+                        <form action="#newsletter" method="post" name="subscribing_form" onsubmit="return first_validate()">
+                            {% csrf_token %}
+                            <small name="error_msg" style="color: #ee002d"></small>
+                            <input type="text" class="newsletter-widge" name="name" id="name" placeholder="Name" required="true">
+                            
+                            <small name="error_msg" style="color: #ee002d"></small>
+                            <input type="email" class="newsletter-widge" name="email" id="email" placeholder="Email" required="true">
+                            <div style="color: #ee002d" name="error_msg"></div>
+
+                            <input type="button" value="Click here to select your favorite kind of news" onclick="release()" class="buttonedletter">
+                            <div style="color: #ee002d" name="error_msg"></div>
+                            <ul class="checkbox-grid dropdown" id="selector">
+                                {% comment %}
+                                {% for each in categories %}
+                                <li><input type="checkbox" name="preferences" id="{{each}}" value="{{each.id}}"/>&nbsp;<label for="{{each}}">{{each}}</label></li><br>
+                                {% endfor %}
+                                {% endcomment %}
+                        
+                            </ul>
+                        
+                            <button type="submit" class="btn w-100" name="subscribe">Subscribe</button>
+                        </form>
+                        <br>
+                        <p>By subscribing to our newsletter, You agree to our terms and practices as described in our <a href="{% url 'privacy' %}"><span style="color: #ee002d;">privacy policy</span></a></p>
+
+                        <script type="text/javascript">
+                            var yen = document.getElementById("selector");
+                            var error = document.getElementsByName("error_msg");
+                            var name = document.forms["subscribing_form"]["name"].value;
+                            var email = document.forms["subscribing_form"]["email"].value;
+
+                            function release(){
+                                yen.innerHTML = ''
+                                error[2].innerHTML = ''
+                                {% for each in categories %}
+                                yen.innerHTML += '<li><input type="checkbox" name="preferences" id="{{each}}" value="{{each.id}}"/>&nbsp;<label for="{{each}}">{{each}}</label></li><br>'
+                                {% endfor %}
+                            }
+
+                            function first_validate(){
+                                var checkboxer = document.getElementsByName("preferences");
+                                var form_man = document.getElementsByName("subscribing_form");
+                                
+                                var checker =  false;
+                                console.log(name)
+                                for(var i=0; i<checkboxer.length; i++){
+                                    if(checkboxer[i].checked){
+                                        checker = true;
+                                        return true;
+                                    }
+                                }
+                                if(checker==false){
+                                    error[2].innerHTML = '<p style="color: #ee002d;">You have not selected any news yet. Click on the button above to select your favorite kind of news</p>'
+                                    return false;
+                                }
+                                
+                            }
+                            
+                        </script>
+
+
+
+                    

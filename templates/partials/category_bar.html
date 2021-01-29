@@ -1,0 +1,21 @@
+
+
+{% for cat in categories %}
+
+<li><a href="{{cat.get_absolute_url}}">{{cat.name}}</a>
+	{% if cat.children.all.first %}
+	<ul class="dropdown">
+		{% for child in cat.children.all %}
+		<li><a href="{{child.get_absolute_url}}">{{child.name}}</a></li>
+		{% endfor %}
+	</ul>
+	{% endif %}
+</li>
+
+
+{% endfor %}
+
+
+
+                                        
+                                            

@@ -1,0 +1,390 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load blog_tags %}
+    {% block description %}Tidings News - {{post.title}}{% endblock %}
+
+    {% block keywords %}online news, magazine and blogging updates, {% for each in post.tags.all %}{{each}}, {% endfor %}{% endblock %}
+
+    {% block title %}Tidings News - {{post.title}}{% endblock %}
+
+{% block content %}
+
+      <!-- ##### Blog Area Start ##### -->
+    <div class="blog-area section-padding-0-80">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 col-lg-8">
+                    <div class="blog-posts-area">
+
+                        <!-- Single Featured Post -->
+                        <div class="single-blog-post featured-post single-post">
+                            <div class="post-thumb">
+                                <a href="#"><img src="{{post.image.url}}" alt=""></a>
+                            </div>
+                            <div class="post-data">
+                                <a href="{{post.category.get_absolute_url}}" class="post-catagory">{{post.category}}</a>
+                                <a href="#" class="post-title">
+                                    <h6>{{post.title}}</h6>
+                                </a>
+                                <div class="post-meta">
+                                    <p class="post-author">By <a href="#">{{post.author.username}}</a></p>
+                                    <div class="bullet-it">{{post.body|safe}}</div>
+                                    
+                                    <div class="newspaper-post-like d-flex align-items-center justify-content-between">
+                                        <!-- Tags -->
+                                        <div class="flex-s-s">
+                                            <!--<li>
+                                            <p class="d-flex"><span>Tags:</span>
+                                                {% for tag in post.tags.all %}
+                                                {{tag}}{% if not forloop.last %}, {% endif %}
+                                                {% endfor %}
+                                            </p></li> 
+                                            <a href="https://twitter.com/share" data-size="large" data-text="{{post.title}}" data-url="{{post.get_absolute_url}}" data-show-count="false">Tweet</a>-->
+                                    
+                                            <span class="f1-s-12 mr-15">
+                                                Share:
+                                            </span>
+                                            
+                                            <div class="flex-wr-s-s size-w-0">
+                                                <a href="https://wa.me/?text=https://tidings.herokuapp.com{{post.get_absolute_url}}" data-action="share/whatsapp/share" target="_blank" title="Share On WhatsApp" class="dis-block f1-s-13 cl0 bg-whatsapp borad-3 p-tb-4 p-rl-18 hov-btn1 m-r-3 m-b-3 trans-03">
+                                                    <i class="fa fa-whatsapp m-r-7"></i>
+                                                    WhatsApp
+                                                </a>
+
+                                                <a href="http://www.facebook.com/share.php?u=https%3A%2F%2Ftidings.herokuapp.com{{post.get_absolute_url|urlencode:''}}&t={{post.title|urlencode:''}}" target="_blank" class="dis-block f1-s-13 cl0 bg-facebook borad-3 p-tb-4 p-rl-18 hov-btn1 m-r-3 m-b-3 trans-03">
+                                                    <i class="fa fa-facebook-f m-r-7"></i>
+                                                    Facebook
+                                                </a>
+
+                                                <a href="https://twitter.com/intent/tweet?text={{post.title|urlencode}}&url=https://tidings.herokuapp.com{{post.get_absolute_url}}&hashtags={% for each in post.tags.all %}{{each}},{% endfor %}" data-size="large" data-text="{{post.title}}" target="_blank" class="dis-block f1-s-13 cl0 bg-twitter borad-3 p-tb-4 p-rl-18 hov-btn1 m-r-3 m-b-3 trans-03">
+                                                    <i class="fa fa-twitter m-r-7"></i>
+                                                    Twitter
+                                                </a>
+                                                <script async src="{% static 'twitter/widget.js' %}" charset="utf-8"></script>
+                                            
+                                                <a href="https://www.linkedin.com/shareArticle?mini=true&url=https%3A%2F%2Ftidings.herokuapp.com{{post.get_absolute_url|urlencode:''}}&title={{post.title|urlencode:''}}&summary={{post.title|urlencode:''}}&source=Tidings-News" class="dis-block f1-s-13 cl0 bg-facebook borad-3 p-tb-4 p-rl-18 hov-btn1 m-r-3 m-b-3 trans-03">
+                                                    <i class="fa fa-linkedin m-r-7">&nbsp;</i>
+                                                    LinkedIn
+                                                </a>
+                                            
+                                                <!--
+                                                <a href="#" class="dis-block f1-s-13 cl0 bg-pinterest borad-3 p-tb-4 p-rl-18 hov-btn1 m-r-3 m-b-3 trans-03">
+                                                    <i class="fab fa-pinterest-p m-r-7"></i>
+                                                    Pinterest
+                                                </a> -->
+                                            </div>
+                                        </div>
+
+                                        {% comment %}
+                                        <!-- Post Like & Post Comment -->
+                                        <div class="d-flex align-items-center post-like--comments">
+                                            <a href="#" class="post-like"><img src="img/core-img/like.png" alt=""> <span>392</span></a>
+                                            <a href="#" class="post-comment"><img src="img/core-img/chat.png" alt=""> <span>10</span></a>
+                                        </div>
+                                        {% endcomment %}
+
+                                    </div>
+                                    
+                                </div>
+                            </div>
+                        </div>
+
+
+                        {% comment %}
+                        <!-- About Author -->
+                        <div class="blog-post-author d-flex">
+                            <div class="author-thumbnail">
+                                <img src="img/bg-img/32.jpg" alt="">
+                            </div>
+                            <div class="author-info">
+                                <a href="#" class="author-name">James Smith, <span>The Author</span></a>
+                                <p>Donec turpis erat, scelerisque id euismod sit amet, fermentum vel dolor. Nulla facilisi. Sed pellen tesque lectus et accu msan aliquam. Fusce lobortis cursus quam, id mattis sapien.</p>
+                            </div>
+                        </div>
+                        {% endcomment %}
+
+                     <!--  s<div class="pager d-flex align-items-center justify-content-between">-->
+
+                        <div class="d-flex justify-content-between align-items-stretch flex-column flex-md-row">
+                                {% if post.previous_post %}
+                            <a href="{{ post.previous_post.get_absolute_url }}" class="text-left d-flex align-items-center">
+                                <div class="post-catagory"><strong style="color: #ee002d;">Previous Post</strong>
+                                    <h6>{{ post.previous_post.title }}</h6>
+                                </div>
+                            </a>
+                                {% endif %} &nbsp
+
+                                {% if post.next_post %}
+                            <a href="{{ post.next_post.get_absolute_url }}" class="text-left d-flex align-items-center justify-content-end">
+                                <div class="post-catagory"><strong style="color: #ee002d;">Next Post</strong>
+                                     <h6>{{ post.next_post.title }}</h6>
+                                </div>
+                            </a>
+                                {% endif %}
+                        </div>
+                        <br>
+                        <br>
+    
+                        {% if similar_post %}
+                        <div class="section-heading">
+                            <h6>Related Posts</h6>
+                        </div>
+                        {% endif %}
+
+                        <div class="row">
+                                 {% for post in similar_post %}
+                            <!-- Single Post -->
+                            <div class="col-12 col-md-6">
+                                <div class="single-blog-post style-3 mb-80">
+                                    <div class="post-thumb">
+                                        <a href="#"><img src="{{post.image.url}}" alt=""></a>
+                                    </div>
+                                    <div class="post-data">
+                                        <a href="{{post.category.get_absolute_url}}" class="post-catagory">{{post.category}}</a>
+                                        <a href="{{post.get_absolute_url}}" class="post-title posting">
+                                            <h6>{{post.title}}</h6>
+                                        </a>
+                                        <p>{{post.publish|timesince}} ago</p>
+                                        {% comment %}
+                                        <div class="post-meta d-flex align-items-center">
+                                            <a href="#" class="post-like"><img src="img/core-img/like.png" alt=""> <span>{{post.view_count}}</span></a>
+                                            <a href="#" class="post-comment"><img src="img/core-img/chat.png" alt=""> <span>{{post.comment_count}}</span></a>
+                                        </div>
+                                        {% endcomment %}
+                                    </div>
+                                </div>
+                            </div>
+                                    {% endfor %}
+                                    {% comment %}
+                            <!-- Single Post -->
+                            <div class="col-12 col-md-6">
+                                <div class="single-blog-post style-3 mb-80">
+                                    <div class="post-thumb">
+                                        <a href="#"><img src="img/bg-img/13.jpg" alt=""></a>
+                                    </div>
+                                    <div class="post-data">
+                                        <a href="#" class="post-catagory">Finance</a>
+                                        <a href="#" class="post-title">
+                                            <h6>Dolor sit amet, consectetur adipiscing elit. Nam eu metus sit amet odio sodales placer. Sed varius leo ac...</h6>
+                                        </a>
+                                        <div class="post-meta d-flex align-items-center">
+                                            <a href="#" class="post-like"><img src="img/core-img/like.png" alt=""> <span>392</span></a>
+                                            <a href="#" class="post-comment"><img src="img/core-img/chat.png" alt=""> <span>10</span></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                                    {% endcomment %}
+                        </div>
+
+                        <!-- Comment Area Start -->
+                        <div class="comment_area clearfix">
+                            {% if comments %}
+                            <h5 class="title">{{comments.count}} Comment{{comments.count|pluralize}}</h5>
+                            {% else %}
+                            <h5 class="title">Be the first to comment here</h5>
+                            {% endif %}
+
+                            <ol>
+
+                                    {% for comment in comments %}
+                                <!-- Single Comment Area -->
+                                <li class="single_comment_area">
+                                    <!-- Comment Content -->
+                                    <div class="comment-content d-flex">
+                                        <!-- Comment Author 
+                                        <div class="comment-author">
+                                            <img src="img/bg-img/30.jpg" alt="author">
+                                        </div>-->
+                                        <!-- Comment Meta -->
+                                        <div class="comment-meta">
+                                            <a href="#" class="post-author">{{comment.name}}</a>
+                                            <a href="#" class="post-date">{{comment.created}}</a>
+                                            <p>{{comment.body}}</p>
+                                        </div>
+                                    </div> 
+                                </li>
+                                    {% endfor %}
+                                    {% comment %}
+                                <!-- Single Comment Area -->
+                                <li class="single_comment_area">
+                                    <!-- Comment Content -->
+                                    <div class="comment-content d-flex">
+                                        <!-- Comment Author -->
+                                        <div class="comment-author">
+                                            <img src="img/bg-img/32.jpg" alt="author">
+                                        </div>
+                                        <!-- Comment Meta -->
+                                        <div class="comment-meta">
+                                            <a href="#" class="post-author">Christian Williams</a>
+                                            <a href="#" class="post-date">April 15, 2018</a>
+                                            <p>Donec turpis erat, scelerisque id euismod sit amet, fermentum vel dolor. Nulla facilisi. Sed pellen tesque lectus et accu msan aliquam. Fusce lobortis cursus quam, id mattis sapien.</p>
+                                        </div>
+                                    </div>
+                                </li>
+                                    {% endcomment %}
+                            </ol>
+                        </div>
+
+                        <div class="post-a-comment-area section-padding-80-0">
+                            <h4>Leave a comment</h4>
+                            
+                            <!-- Reply Form -->
+                            <div class="contact-form-area">
+                                <form action="." method="post">
+                                    {% csrf_token %}
+                                
+                                    <div class="row">
+                                        <div class="col-12 col-lg-6">
+                                            <input type="text" class="form-control" id="name" placeholder="Name*" name="name">
+                                        </div>
+                                        <div class="col-12 col-lg-6">
+                                            <input type="email" class="form-control" id="email" placeholder="Email*" name="email">
+                                        </div>
+                                            {% comment %}
+                                        <div class="col-12">
+                                            <input type="text" class="form-control" id="subject" placeholder="Website">
+                                        </div>
+                                            {% endcomment %}
+                                        <div class="col-12">
+                                            <textarea class="form-control" id="message" cols="30" rows="10" placeholder="Message" name="body"></textarea>
+                                        </div>
+                                        <div class="col-12 text-center">
+                                            <button class="btn newspaper-btn mt-30 w-100" type="submit" name="submit">Submit Comment</button>
+                                        </div>
+                                    </div>
+                                
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-12 col-lg-4">
+                    <div class="blog-sidebar-area">
+                        <div class="section-heading">
+                            <h6>More News</h6>
+                        </div>
+                        <!-- Latest Posts Widget -->
+                        <div class="latest-posts-widget mb-50">
+                            {% for each  in featured_post %}
+
+                            <!-- Single Featured Post -->
+                            <div class="single-blog-post small-featured-post d-flex">
+                                <div class="post-thumb">
+                                    <a href="{{each.get_absolute_url}}"><img src="{{each.image.url}}" alt=""></a>
+                                </div>
+                                <div class="post-data">
+                                    <a href="{{each.category.get_absolute_url}}" class="post-catagory">{{each.category}}</a>
+                                    <div class="post-meta">
+                                        <a href="{{each.get_absolute_url}}" class="post-title">
+                                            <h6>{{each.title}}</h6>
+                                        </a>
+                                        <p class="post-date">{{each.publish|timesince}} ago</p>
+                                    </div>
+                                </div>
+                            </div>
+                            {% endfor %}
+
+
+                        </div>
+                            
+                        <!-- Popular News Widget -->
+                          {% trending_news as  trending %}
+                            {% if trending %}
+                        <div class="popular-news-widget mb-50">
+                            <h3>Trending News</h3>
+
+                            <!-- Single Popular Blog -->
+                            {% for post in trending %}
+                            <!-- Single Popular Blog -->
+                            <div class="single-popular-post">
+                                <a href="{{post.get_absolute_url}}">
+                                    <h6>{{post.title}}</h6>
+                                    {{post.publish}}
+                                </a>    
+                            </div>
+                                <hr>
+                                {% endfor %}
+                        </div>
+                            {% endif %}
+
+                            <br><br><br>
+                        <!-- Newsletter Widget -->
+                        <section id="newsletter">
+                            <div class="newsletter-widget">
+                                {% if messages %}
+                                {% for message in messages %}
+                              <div class="alert {{message.tags}} alert-dismissible fade show" style="margin-top:10px" role="alert">
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                    {{message}}
+                              </div>
+                                {% endfor %}
+                                <br>
+                                {% endif %}
+
+                                <h4>Newsletter</h4>
+                                <p>Subscribe to our newsletter and get real time updates on the news you love the most</p>
+                                {% newsletter %}
+                            </div>
+                        </section>
+                            {% comment %}
+                        <!-- Latest Comments Widget -->
+                        <div class="latest-comments-widget">
+                            <h3>Latest Comments</h3>
+
+                            <!-- Single Comments -->
+                            <div class="single-comments d-flex">
+                                <div class="comments-thumbnail mr-15">
+                                    <img src="img/bg-img/29.jpg" alt="">
+                                </div>
+                                <div class="comments-text">
+                                    <a href="#">Jamie Smith <span>on</span> Facebook is offering facial recognition...</a>
+                                    <p>06:34 am, April 14, 2018</p>
+                                </div>
+                            </div>
+
+                            <!-- Single Comments -->
+                            <div class="single-comments d-flex">
+                                <div class="comments-thumbnail mr-15">
+                                    <img src="img/bg-img/30.jpg" alt="">
+                                </div>
+                                <div class="comments-text">
+                                    <a href="#">Jamie Smith <span>on</span> Facebook is offering facial recognition...</a>
+                                    <p>06:34 am, April 14, 2018</p>
+                                </div>
+                            </div>
+
+                            <!-- Single Comments -->
+                            <div class="single-comments d-flex">
+                                <div class="comments-thumbnail mr-15">
+                                    <img src="img/bg-img/31.jpg" alt="">
+                                </div>
+                                <div class="comments-text">
+                                    <a href="#">Jamie Smith <span>on</span> Facebook is offering facial recognition...</a>
+                                    <p>06:34 am, April 14, 2018</p>
+                                </div>
+                            </div>
+
+                            <!-- Single Comments -->
+                            <div class="single-comments d-flex">
+                                <div class="comments-thumbnail mr-15">
+                                    <img src="img/bg-img/32.jpg" alt="">
+                                </div>
+                                <div class="comments-text">
+                                    <a href="#">Jamie Smith <span>on</span> Facebook is offering facial recognition...</a>
+                                    <p>06:34 am, April 14, 2018</p>
+                                </div>
+                            </div>
+                        </div>
+                            {% endcomment %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- ##### Blog Area End ##### -->
+    {% endblock %}
+   

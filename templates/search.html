@@ -1,0 +1,198 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load blog_tags %}
+
+    {% block description %}Search for your favorite news on Tidings{% endblock %}
+
+    {% block keywords %}online news, lifestyle and blogging searches, world news searches, business news searches, nationalal and politics news searches{% endblock %}
+    {% block title %}Tidings News - Search {{search}} {% endblock %}
+
+{% block content %}
+
+
+    <!-- ##### Blog Area Start ##### -->
+    <div class="blog-area section-padding-0-80">
+        <div class="container">
+            <div class="row">
+                {% if post_list %}
+                <div class="col-12 col-lg-8">
+                    <div class="contact-title">
+                        <h2>Search Result for "{{search}}"</h2>
+                    </div><br><br>
+
+                    <div class="blog-posts-area">
+                        {% for post in post_list %}
+                        <!-- Single Featured Post -->
+                        <div class="single-blog-post featured-post mb-30">
+                            <div class="post-thumb">
+                                <a href="#"><img src="{{post.image.url}}" alt=""></a>
+                            </div>
+                            <div class="post-data">
+                                <a href="." class="post-catagory">{{category}}</a>
+                                <a href="{{post.get_absolute_url}}" class="post-title">
+                                    <h6>{{post.title}}</h6>
+                                </a>
+                                <div class="post-meta">
+                                    <p class="post-author">By <a href=".">{{post.author.username}}</a></p>
+                                    <a href="{{post.get_absolute_url}}">{{post.body|safe|truncatewords:50}}</a>
+
+                                    <span><a href="{{post.get_absolute_url}}" style="color: #ee002d;">Continue Reading</a></span>
+                                </div>
+                                
+                            </div>
+                        </div>
+                        {% endfor %}
+
+                        
+                    </div>
+
+                        {% comment %}
+                    <nav aria-label="Page navigation example">
+                        <ul class="pagination mt-50">
+                            <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                            <li class="page-item"><a class="page-link" href="#">2</a></li>
+                            <li class="page-item"><a class="page-link" href="#">3</a></li>
+                            <li class="page-item"><a class="page-link" href="#">4</a></li>
+                            <li class="page-item"><a class="page-link" href="#">5</a></li>
+                            <li class="page-item"><a class="page-link" href="#">...</a></li>
+                            <li class="page-item"><a class="page-link" href="#">10</a></li>
+                        </ul>
+                    </nav>
+                        {% endcomment %}
+                </div>
+                {% else %}
+                <div class="col-12 col-lg-8">
+                    <div class="contact-title">
+                        <h2>No search result found for "{{search}}"</h2>
+                    </div><br><br>
+
+                </div>
+                {% endif %}
+
+                <div class="col-12 col-lg-4">
+                    <div class="blog-sidebar-area">
+                        <div class="section-heading">
+                            <h6>More News</h6>
+                        </div>
+                        <!-- Latest Posts Widget -->
+                        <div class="latest-posts-widget mb-50">
+                            {% for each  in featured_post %}
+
+                            <!-- Single Featured Post -->
+                            <div class="single-blog-post small-featured-post d-flex">
+                                <div class="post-thumb">
+                                    <a href="{{each.get_absolute_url}}"><img src="{{each.image.url}}" alt=""></a>
+                                </div>
+                                <div class="post-data">
+                                    <a href="{{each.category.get_absolute_url}}" class="post-catagory">{{each.category}}</a>
+                                    <div class="post-meta">
+                                        <a href="{{each.get_absolute_url}}" class="post-title">
+                                            <h6>{{each.title}}</h6>
+                                        </a>
+                                        <p class="post-date">{{each.publish|timesince}} ago</p>
+                                    </div>
+                                </div>
+                            </div>
+                            {% endfor %}
+
+                        </div>
+
+                        <!-- Popular News Widget -->
+                        {% trending_news as  trending %}
+                            {% if trending %}
+                        <div class="popular-news-widget mb-50">
+                            <h3>Trending News</h3>
+
+                            <!-- Single Popular Blog -->
+                            {% for post in trending %}
+                            <!-- Single Popular Blog -->
+                            <div class="single-popular-post">
+                                <a href="{{post.get_absolute_url}}">
+                                    <h6>{{post.title}}</h6>
+                                    {{post.publish}}
+                                </a>    
+                            </div>
+                                <hr>
+                                {% endfor %}
+                        </div>
+                            {% endif %}
+
+                        <!-- Newsletter Widget -->
+                        <section id="newsletter">
+                            <div class="newsletter-widget">
+                                {% if messages %}
+                                {% for message in messages %}
+                              <div class="alert {{message.tags}} alert-dismissible fade show" style="margin-top:10px" role="alert">
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                    {{message}}
+                              </div>
+                                {% endfor %}
+                                <br>
+                                {% endif %}
+
+                                <h4>Newsletter</h4>
+                                <p>Subscribe to our newsletter and get real time updates on the news you love the most</p>
+                                {% newsletter %}
+                            </div>
+                        </section>
+
+                            {% comment %}
+                        <!-- Latest Comments Widget -->
+                        <div class="latest-comments-widget">
+                            <h3>Latest Comments</h3>
+
+                            <!-- Single Comments -->
+                            <div class="single-comments d-flex">
+                                <div class="comments-thumbnail mr-15">
+                                    <img src="img/bg-img/29.jpg" alt="">
+                                </div>
+                                <div class="comments-text">
+                                    <a href="#">Jamie Smith <span>on</span> Facebook is offering facial recognition...</a>
+                                    <p>06:34 am, April 14, 2018</p>
+                                </div>
+                            </div>
+
+                            <!-- Single Comments -->
+                            <div class="single-comments d-flex">
+                                <div class="comments-thumbnail mr-15">
+                                    <img src="img/bg-img/30.jpg" alt="">
+                                </div>
+                                <div class="comments-text">
+                                    <a href="#">Jamie Smith <span>on</span> Facebook is offering facial recognition...</a>
+                                    <p>06:34 am, April 14, 2018</p>
+                                </div>
+                            </div>
+
+                            <!-- Single Comments -->
+                            <div class="single-comments d-flex">
+                                <div class="comments-thumbnail mr-15">
+                                    <img src="img/bg-img/31.jpg" alt="">
+                                </div>
+                                <div class="comments-text">
+                                    <a href="#">Jamie Smith <span>on</span> Facebook is offering facial recognition...</a>
+                                    <p>06:34 am, April 14, 2018</p>
+                                </div>
+                            </div>
+
+                            <!-- Single Comments -->
+                            <div class="single-comments d-flex">
+                                <div class="comments-thumbnail mr-15">
+                                    <img src="img/bg-img/32.jpg" alt="">
+                                </div>
+                                <div class="comments-text">
+                                    <a href="#">Jamie Smith <span>on</span> Facebook is offering facial recognition...</a>
+                                    <p>06:34 am, April 14, 2018</p>
+                                </div>
+                            </div>
+                        </div>
+                            {% endcomment %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- ##### Blog Area End ##### -->
+
+{% endblock %}

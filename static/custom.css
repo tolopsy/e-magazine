@@ -1,0 +1,126 @@
+.bg-facebook {
+	background-color: #3b5998;
+}
+
+.bg-twitter {
+    background-color: #1da1f2;
+}
+
+.bg-google {
+    background-color: #dd4b39;
+}
+
+.bg-pinterest {
+    background-color: #bd081c;
+}
+
+.bg-whatsapp {
+    background-color: #25d366;
+}
+
+.flex-s-s {
+	align-items: flex-start;
+	justify-content: flex-start;
+	display: flex;
+	box-sizing: border-box;
+}
+
+.size-w-0 {
+	flex-grow: 1;
+}
+
+.flex-wr-s-s  {
+	align-items: flex-start;
+	justify-content: flex-start;
+	flex-wrap: wrap;
+	display: flex;	
+	box-sizing: border-box;
+}
+
+.dis-block {
+	display: block;
+}
+
+.f1-s-12 {
+    /*font-family: Roboto-Regular; */
+    font-size: 15px;
+    line-height: 1.8;
+}
+
+.f1-s-13 {
+    font-family: Roboto-Regular;
+    font-size: 13px;
+    line-height: 1.7;
+}
+
+.cl0 {
+    color: #fff;
+}
+
+.trans-03 {
+    /*-webkit-transition: all .3s;
+    -o-transition: all .3s;
+    -moz-transition: all .3s; */
+    transition: all .3s;
+}
+
+.borad-3 {
+    border-radius: 3px;
+}
+
+.m-r-3{
+    margin-right: 3px;
+}
+
+.m-b-3{
+    margin-bottom: 3px;
+}
+
+.p-rl-18 {
+    padding-right: 18px;
+    padding-left: 18px;
+}
+
+.p-tb-4 {
+    padding-top: 4px;
+    padding-bottom: 4px;
+}
+
+.hov-btn1:hover {
+  background-color: #ee002d;
+  /*background-color: #17b978;*/
+  border-color: #17b978;
+  color: #fff;
+}
+
+
+.checkbox-grid li {
+  display: block;
+  float: left;
+  width: 100%;
+}
+
+.posting h6 {
+	margin-bottom: 5px !important;
+}
+
+.bullet-it ul {
+  margin-left: 1rem;
+}
+
+.bullet-it ul li {
+  list-style-type: disc;
+}
+
+.buttonedletter{
+  margin-bottom: 10px; 
+  padding: 5px; 
+  color: #ee002d;
+  background-color: #ffffff;
+  border: none;
+}
+
+.buttonedletter:hover {
+  color: #ffffff; 
+  background-color: #ee002d;
+}
